@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default axios.create({
   baseURL: `https://trefle.io/api/v1`,
+  timeout: 1000,
   headers: {
-    Authorization: "Bearer GQNO3jvMdet-pXOeozOMBjvsP6cuMwGj_an-nSDgYOI",
+    Authorization: "GQNO3jvMdet-pXOeozOMBjvsP6cuMwGj_an-nSDgYOI",
   },
 });
