@@ -7,14 +7,14 @@ export default () => {
 
   const searchApi = async (searchTerm) => {
     try {
-      const response = await trefle.get("/search", {
+      const response = await trefle.get("/plants", {
         params: {
-          limit: 50,
+          limit: 10,
           term: searchTerm,
         },
       });
-      //   setResults(response.data[1].common_name);
-      console.log(response.data[1].common_name);
+      setResults(response.data[0].common_name);
+      console.log(response.data[0].common_name);
     } catch (e) {
       setErrorMessage("Something went wrong");
     }
