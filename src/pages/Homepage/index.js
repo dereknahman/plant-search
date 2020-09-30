@@ -15,7 +15,7 @@ const Homepage = () => {
       </header>
       <SearchBar
         term={term}
-        // value={term}
+        value={term}
         onTermChange={(event) => {
           setTerm(event.target.value);
         }}
@@ -24,6 +24,7 @@ const Homepage = () => {
           event.preventDefault();
         }}
       />
+      <p>{results}</p>
       {errorMessage ? <p>{errorMessage}</p> : null}
     </div>
   );

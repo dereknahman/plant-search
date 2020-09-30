@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import trefle from "../../api/trefle";
 
 export default () => {
@@ -7,22 +7,26 @@ export default () => {
 
   const searchApi = async (searchTerm) => {
     try {
-      const response = await trefle.get(`/plants`, {
-        params: {
-          limit: 10,
-          term: searchTerm,
-        },
-      });
-      console.log(response);
-      setResults(response.data[0].common_name);
+      const response = await trefle
+        .get(`/plants`, {
+          params: {
+            limit: 20,
+            term: searchTerm,
+          },
+        })
+        .then((response) => {
+          const responseData = response.data.data;
+          const plantNamesArray = responseData.map(
+            (plantName) => plantName.common_name
+          );
+          console.log("plant names array", plantNamesArray);
+          setResults(plantNamesArray);
+        });
+      return response;
     } catch (e) {
       setErrorMessage("Something went wrong");
     }
   };
-
-  useEffect(() => {
-    searchApi("oak");
-  }, []);
 
   return [searchApi, errorMessage, results];
 };
