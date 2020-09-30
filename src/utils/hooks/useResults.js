@@ -14,7 +14,7 @@ export default () => {
         },
       });
       setResults(response.data[0].common_name);
-      console.log(response.data[0].common_name);
+      console.log(response);
     } catch (e) {
       setErrorMessage("Something went wrong");
     }

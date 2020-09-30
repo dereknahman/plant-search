@@ -5,7 +5,7 @@ import useResults from "../../utils/hooks/useResults";
 
 const Homepage = () => {
   const [term, setTerm] = useState("");
-  const [searchApi, errorMessage] = useResults();
+  const [searchApi, errorMessage, results] = useResults();
 
   return (
     <div className={styles.container}>
@@ -15,12 +15,14 @@ const Homepage = () => {
       </header>
       <SearchBar
         term={term}
-        value={term}
+        // value={term}
         onTermChange={(event) => {
-          // event.preventDefault();
           setTerm(event.target.value);
         }}
-        onTermSubmit={() => searchApi(term)}
+        onTermSubmit={(event) => {
+          searchApi(term);
+          event.preventDefault();
+        }}
       />
       {errorMessage ? <p>{errorMessage}</p> : null}
     </div>
