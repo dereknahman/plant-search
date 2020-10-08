@@ -4,20 +4,20 @@ import styles from "./Homepage.module.css";
 import useResults from "../../utils/hooks/useResults";
 
 const Homepage = () => {
-  const [term, setTerm] = useState("");
-  const [searchApi, errorMessage, results] = useResults();
+  // const [term, setTerm] = useState("");
+  const [searchApi, errorMessage, results, term, setTerm] = useResults();
 
-  console.log(results, "results state var coming from Homepage");
+  console.log(results, " <---- results state var coming from Homepage");
 
-  const renderList = results.map((tree) => {
+  const renderResultsList = results.map((tree) => {
     return (
-      <div key={tree.common_name}>
+      <div key={tree.id}>
         <h3>{tree.common_name}</h3>
         <p>Family name: {tree.family_common_name}</p>
         <p>Scientific name: {tree.scientific_name}</p>
         <img
           src={tree.image_url}
-          alt="pictures of trees"
+          alt="photographs of trees"
           style={{ maxHeight: "230px", maxWidth: "250px " }}
         />
       </div>
@@ -31,7 +31,6 @@ const Homepage = () => {
         <h2 className={styles.subHeader}>Find your favourite plant</h2>
       </header>
       <SearchBar
-        term={term}
         value={term}
         onChange={(event) => {
           setTerm(event.target.value);
@@ -41,7 +40,7 @@ const Homepage = () => {
           event.preventDefault();
         }}
       />
-      {renderList}
+      {renderResultsList}
       {errorMessage ? <p>{errorMessage}</p> : null}
     </div>
   );
