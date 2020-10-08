@@ -4,8 +4,25 @@ import styles from "./Homepage.module.css";
 import useResults from "../../utils/hooks/useResults";
 
 const Homepage = () => {
-  const [term, setTerm] = useState("");
-  const [searchApi, errorMessage, results] = useResults();
+  // const [term, setTerm] = useState("");
+  const [searchApi, errorMessage, results, term, setTerm] = useResults();
+
+  console.log(results, " <---- results state var coming from Homepage");
+
+  const renderResultsList = results.map((tree) => {
+    return (
+      <div key={tree.id}>
+        <h3>{tree.common_name}</h3>
+        <p>Family name: {tree.family_common_name}</p>
+        <p>Scientific name: {tree.scientific_name}</p>
+        <img
+          src={tree.image_url}
+          alt="photographs of trees"
+          style={{ maxHeight: "230px", maxWidth: "250px " }}
+        />
+      </div>
+    );
+  });
 
   return (
     <div className={styles.container}>
@@ -14,9 +31,8 @@ const Homepage = () => {
         <h2 className={styles.subHeader}>Find your favourite plant</h2>
       </header>
       <SearchBar
-        term={term}
         value={term}
-        onTermChange={(event) => {
+        onChange={(event) => {
           setTerm(event.target.value);
         }}
         onTermSubmit={(event) => {
@@ -24,7 +40,7 @@ const Homepage = () => {
           event.preventDefault();
         }}
       />
-      <p>{results}</p>
+      {renderResultsList}
       {errorMessage ? <p>{errorMessage}</p> : null}
     </div>
   );
