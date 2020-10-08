@@ -4,8 +4,8 @@ import styles from "./Homepage.module.css";
 import useResults from "../../utils/hooks/useResults";
 
 const Homepage = () => {
-  // const [term, setTerm] = useState("");
-  const [searchApi, errorMessage, results, term, setTerm] = useResults();
+  const [term, setTerm] = useState("");
+  const [searchApi, errorMessage, results] = useResults();
 
   console.log(results, " <---- results state var coming from Homepage");
 
