@@ -5,25 +5,17 @@ export default () => {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
+  console.log("results state var coming from hook", results);
+
   const searchApi = async (searchTerm) => {
     try {
-      const response = await trefle
-        .get(`/plants`, {
-          params: {
-            limit: 20,
-            term: searchTerm,
-          },
-        })
-        .then((response) => {
-          const responseData = response.data.data;
-          const plantNamesArray = responseData.map(
-            (plantName) => plantName.common_name
-          );
-          console.log("plant names array", plantNamesArray);
-          setResults(plantNamesArray);
-        });
-      return response;
-    } catch (e) {
+      const { data } = await trefle.get(`/plants`, {
+        params: {
+          query: searchTerm,
+        },
+      });
+      setResults(data.data);
+    } catch (err) {
       setErrorMessage("Something went wrong");
     }
   };
