@@ -16,6 +16,7 @@ In the future I plan to include the following features:
 ♿️ Accessibility  
 📖 Pagination  
 🛣 Routing  
+📱 Mobile support  
 
 ...and plenty more besides.
 
