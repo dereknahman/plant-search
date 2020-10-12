@@ -12,7 +12,6 @@ export default () => {
           q: term,
         },
       });
-      setErrorMessage("");
       setResults(data.data);
     } catch (err) {
       setErrorMessage("Something went wrong");
