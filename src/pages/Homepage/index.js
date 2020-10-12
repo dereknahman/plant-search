@@ -15,8 +15,8 @@ const Homepage = () => {
         <p>Scientific name: {tree.scientific_name}</p>
         <img
           src={tree.image_url}
-          alt="photographs of trees"
-          style={{ maxHeight: "230px", maxWidth: "250px " }}
+          alt="photographs of plantlife"
+          style={{ maxHeight: "230px", maxWidth: "250px" }}
         />
       </div>
     );
