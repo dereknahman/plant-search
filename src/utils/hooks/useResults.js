@@ -14,9 +14,9 @@ export default () => {
       });
       setResults(data.data);
     } catch (err) {
-      setErrorMessage("Something went wrong");
+      setErrorMessage("No data found. Are you sure you spelled it right?");
     }
   };
 
-  return [searchApi, errorMessage, results];
+  return { searchApi, errorMessage, setErrorMessage, results };
 };
