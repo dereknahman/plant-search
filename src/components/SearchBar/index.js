@@ -8,7 +8,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
           <input
             id="plant-name"
             placeholder="Plant name"
-            onChange={onTermChange}
+            onChange={(e) => onTermChange(e.target.value)}
             value={term}
           />
         </label>
