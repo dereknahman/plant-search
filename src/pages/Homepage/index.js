@@ -7,8 +7,6 @@ const Homepage = () => {
   const [term, setTerm] = useState("");
   const [searchApi, errorMessage, results] = useResults();
 
-  console.log(results, " <---- results state var coming from Homepage");
-
   const renderResultsList = results.map((tree) => {
     return (
       <div key={tree.id}>
