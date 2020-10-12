@@ -13,9 +13,9 @@ I am working on making it look decent now that the API request is working. This 
 
 In the future I plan to include the following features:
 
-♿️ Accessibility
-📖 Pagination
-🛣 Routing
+♿️ Accessibility  
+📖 Pagination  
+🛣 Routing  
 
 ...and plenty more besides.
 
