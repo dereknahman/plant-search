@@ -7,14 +7,14 @@ const Homepage = () => {
   const [term, setTerm] = useState("");
   const [searchApi, errorMessage, results] = useResults();
 
-  const renderResultsList = results.map((tree) => {
+  const renderResultsList = results.map((plant) => {
     return (
-      <div key={tree.id}>
-        <h3>{tree.common_name}</h3>
-        <p>Family name: {tree.family_common_name}</p>
-        <p>Scientific name: {tree.scientific_name}</p>
+      <div key={plant.id}>
+        <h3>{plant.common_name}</h3>
+        <p>Family name: {plant.family_common_name}</p>
+        <p>Scientific name: {plant.scientific_name}</p>
         <img
-          src={tree.image_url}
+          src={plant.image_url}
           alt="photographs of plantlife"
           style={{ maxHeight: "230px", maxWidth: "250px" }}
         />
