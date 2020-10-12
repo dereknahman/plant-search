@@ -1,6 +1,6 @@
 # plant-search
 
-Welcome to my side-project! It's a plant search engine built using React.
+Welcome to my side-project! It's a plant search engine built using React and the wonderful [Trefle API](https://trefle.io/).
 
 Clone the repo and run the project locally by running the following commands in your terminal:
 
