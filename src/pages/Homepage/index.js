@@ -32,9 +32,7 @@ const Homepage = () => {
       </header>
       <SearchBar
         value={term}
-        onChange={(event) => {
-          setTerm(event.target.value);
-        }}
+        onTermChange={setTerm}
         onTermSubmit={(event) => {
           searchApi(term);
           event.preventDefault();
