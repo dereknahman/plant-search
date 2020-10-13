@@ -7,6 +7,21 @@ const Homepage = () => {
   const [term, setTerm] = useState("");
   const { searchApi, errorMessage, results } = useResults();
 
+  const resultsList = results.map((plant) => {
+    return (
+      <div key={plant.id}>
+        <h3>{plant.common_name}</h3>
+        <p>Family name: {plant.family_common_name}</p>
+        <p>Scientific name: {plant.scientific_name}</p>
+        <img
+          src={plant.image_url}
+          alt="photographs of plantlife"
+          style={{ maxHeight: "230px", maxWidth: "250px" }}
+        />
+      </div>
+    );
+  });
+
   return (
     <div className={styles.container}>
       <header>
@@ -21,20 +36,7 @@ const Homepage = () => {
           event.preventDefault();
         }}
       />
-      <ul>
-        {results.map((plant) => (
-          <li key={plant.id}>
-            <h3>{plant.common_name}</h3>
-            <p>Family name: {plant.family_common_name}</p>
-            <p>Scientific name: {plant.scientific_name}</p>
-            <img
-              src={plant.image_url}
-              alt="photographs of plantlife"
-              style={{ maxHeight: "230px", maxWidth: "250px" }}
-            />
-          </li>
-        ))}
-      </ul>
+      {resultsList}
       {errorMessage ? <p>{errorMessage}</p> : null}
     </div>
   );
